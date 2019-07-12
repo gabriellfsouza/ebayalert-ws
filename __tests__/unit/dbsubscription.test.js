@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
 const Subscription = require('../../src/schemas/Subscription');
+const database = require('../../src/database');
 
 describe('Database', () => {
   beforeAll(async () => {
+    await database.mongoConnection;
     await Subscription.remove();
   });
 
   afterAll(async () => {
-    await mongoose.connection.close();
+    await database.disconnect();
   });
 
   describe('Subscription', () => {
