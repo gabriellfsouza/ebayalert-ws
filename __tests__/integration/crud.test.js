@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
-const { superPost } = require('../utils/supertest');
+const { superPost, superGet } = require('../utils/supertest');
 
 const app = require('../../src/app');
 const Subscription = require('../../src/schemas/Subscription');
 
 describe('CRUD Operations over the subscriptions list routes.', () => {
   beforeAll(async () => {
+    await Subscription.remove();
+  });
+
+  afterEach(async () => {
     await Subscription.remove();
   });
 
@@ -61,6 +65,20 @@ describe('CRUD Operations over the subscriptions list routes.', () => {
       responses.forEach((response) => {
         expect(response.status).toBe(400);
       });
+    });
+  });
+
+  describe('List subscriptions', () => {
+    const route = '/subscriptions';
+    beforeEach(async () => {
+      const subscription = new Subscription(config);
+      await subscription.save();
+    });
+
+    it('should retrieve subscriptions array', async () => {
+      const response = await superGet(app, route);
+      expect(response.status).toBe(200);
+      expect(response.body).toMatchObject(config);
     });
   });
 });
