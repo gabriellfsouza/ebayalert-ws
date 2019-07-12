@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 function arraySize(val) {
-  return val.length <= 3 || val.length === 0;
+  return val.length > 0 && val.length <= 3;
 }
 
 const SubscriptionSchema = new Schema({
@@ -18,7 +18,7 @@ const SubscriptionSchema = new Schema({
   phrases: {
     type: [String],
     required: true,
-    validate: [arraySize, '{PATH} size is out of range or empty'],
+    validate: [arraySize, 'size is out of range or empty'],
   },
 });
 
