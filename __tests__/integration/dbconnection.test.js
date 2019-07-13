@@ -1,10 +1,11 @@
 const { isDate } = require('date-fns');
 
+const mongoose = require('mongoose');
 const database = require('../../src/database');
 
 describe('Database', () => {
   afterAll(async () => {
-    await database.disconnect();
+    await mongoose.disconnect();
   });
 
   describe('Connection', () => {

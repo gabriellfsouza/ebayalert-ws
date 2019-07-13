@@ -1,6 +1,6 @@
+const mongoose = require('mongoose');
 const { superPost, superGet } = require('../utils/supertest');
 const database = require('../../src/database');
-
 const app = require('../../src/app');
 const Subscription = require('../../src/schemas/Subscription');
 
@@ -15,7 +15,7 @@ describe('CRUD Operations over the subscriptions list routes.', () => {
   });
 
   afterAll(async () => {
-    await database.disconnect();
+    await mongoose.disconnect();
   });
 
   const config = {
@@ -23,7 +23,7 @@ describe('CRUD Operations over the subscriptions list routes.', () => {
     interval: 2,
     phrases: ['android', 'macbook air', 'sandisk 16GB'],
   };
-  const { email, interval, phrases } = config;
+  // const { email, interval, phrases } = config;
 
   describe('Create subscription', () => {
     const route = '/subscriptions';

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Subscription = require('../../src/schemas/Subscription');
 const database = require('../../src/database');
 
@@ -8,7 +9,7 @@ describe('Database', () => {
   });
 
   afterAll(async () => {
-    await database.disconnect();
+    await mongoose.disconnect();
   });
 
   describe('Subscription', () => {
