@@ -15,6 +15,11 @@ const SubscriptionSchema = new Schema({
     type: Number,
     required: true,
   },
+  deleted: {
+    type: Boolean,
+    require: true,
+    default: false,
+  },
   phrases: {
     type: [String],
     required: true,
