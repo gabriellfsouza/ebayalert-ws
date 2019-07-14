@@ -6,4 +6,15 @@ const superPost = (server, route, body) => request(server)
 
 const superGet = (server, route) => request(server).get(route);
 
-module.exports = { superPost, superGet };
+const superDelete = (server, route) => request(server).delete(route);
+
+const superPut = (server, route, body) => request(server)
+  .put(route)
+  .send(body);
+
+module.exports = {
+  superPost,
+  superGet,
+  superDelete,
+  superPut,
+};
