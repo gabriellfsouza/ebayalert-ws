@@ -14,7 +14,7 @@ class AlertOperations {
   async sendSubscribedMail(email, phrase) {
     const resultadoFormatado = await ebay.findPhrase(phrase);
 
-    return mail.sendMail({
+    await mail.sendMail({
       to: email,
       subject: 'Scheduled Email',
       template: 'scheduled',
