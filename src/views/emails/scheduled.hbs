@@ -1,0 +1,25 @@
+<h1>eBay Search Results</h1>
+<div id="results">
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+    <tbody>
+      {{#each items}}
+      <tr>
+        <td class="image-container">
+          <img src="{{pic}}" border="0">
+        </td>
+        <td class="data-container">
+          <a class="item-link" href="{{viewItemURL}}" target="_blank">
+            <p class="title">{{title}}</p>
+            <p class="subtitle">{{subtitle}}</p>
+            <p class="price">{{displayPrice}}</p>
+            <!--if (buyItNowAvailable) -->
+            <p class="bin"> Buy It Now</p>
+            <!--if (freeShipping) -->
+            <p class="fs"> Free shipping</p>
+          </a>
+        </td>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div>

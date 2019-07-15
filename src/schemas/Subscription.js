@@ -6,25 +6,30 @@ function arraySize(val) {
   return val.length > 0 && val.length <= 3;
 }
 
-const SubscriptionSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
+const SubscriptionSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    interval: {
+      type: Number,
+      required: true,
+    },
+    deleted: {
+      type: Boolean,
+      require: true,
+      default: false,
+    },
+    phrases: {
+      type: [String],
+      required: true,
+      validate: [arraySize, 'size is out of range or empty'],
+    },
   },
-  interval: {
-    type: Number,
-    required: true,
+  {
+    timestamps: true,
   },
-  deleted: {
-    type: Boolean,
-    require: true,
-    default: false,
-  },
-  phrases: {
-    type: [String],
-    required: true,
-    validate: [arraySize, 'size is out of range or empty'],
-  },
-});
+);
 
 module.exports = mongoose.model('Subscription', SubscriptionSchema);
