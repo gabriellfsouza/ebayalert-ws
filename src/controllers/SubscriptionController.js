@@ -55,7 +55,7 @@ class SubscriptionController {
     const { _id } = req.params;
 
     await Subscription.findByIdAndUpdate(_id, { deleted: true }, { new: true });
-    
+
     return res.status(201).send();
   }
 

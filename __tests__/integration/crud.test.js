@@ -137,7 +137,7 @@ describe('CRUD Operations over the subscriptions list routes.', () => {
   describe('Delete subscription', () => {
     it('should make a logical subscription deletion', async () => {
       const { _id } = (await superPost(app, route, config)).body;
-      
+
       const response = await superDelete(app, `${route}/${_id}`);
       const subscription = await Subscription.findById(_id);
 
