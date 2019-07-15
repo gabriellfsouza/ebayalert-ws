@@ -3,7 +3,7 @@ const Subscription = require('../schemas/Subscription');
 class SubscriptionController {
   async index(req, res) {
     const { _id } = req.params;
-    const { phrases, interval, email } = req.body;
+    const { phrase, interval, email } = req.body;
     if (_id) {
       const result = await Subscription.findById(_id);
       if (!result || (result && result.deleted)) return res.status(404).send();
@@ -11,7 +11,7 @@ class SubscriptionController {
     }
 
     const query = {};
-    if (phrases !== undefined) query.phrases = phrases;
+    if (phrase !== undefined) query.phrase = phrase;
     if (interval !== undefined) query.interval = interval;
     if (email !== undefined) query.email = email;
 
@@ -24,12 +24,11 @@ class SubscriptionController {
   }
 
   async store(req, res) {
-    let { phrases } = req.body;
+    const { phrase } = req.body;
     const { interval, email } = req.body;
     let _id;
-    phrases = phrases.sort((a, b) => a.localeCompare(b));
 
-    const exists = await Subscription.findOne({ email, phrases });
+    const exists = await Subscription.findOne({ email, phrase });
     /**
      * Verifica se o objeto existe, se foi deletado e, caso não exista, cria um novo.
      */
@@ -40,14 +39,14 @@ class SubscriptionController {
       await exists.save();
     }
     if (!exists) {
-      const subscription = await new Subscription({ interval, email, phrases });
+      const subscription = await new Subscription({ interval, email, phrase });
       _id = (await subscription.save())._id;
     }
     return res.status(200).json({
       _id,
       interval,
       email,
-      phrases,
+      phrase,
     });
   }
 
@@ -61,12 +60,12 @@ class SubscriptionController {
 
   async update(req, res) {
     const { _id } = req.params;
-    const { phrases, email, interval } = req.body;
+    const { phrase, email, interval } = req.body;
 
     const exists = await Subscription.findByIdAndUpdate(
       _id,
       {
-        phrases,
+        phrase,
         email,
         interval,
         deleted: false,
