@@ -26,11 +26,6 @@ const SubscriptionSchema = new Schema(
       required: true,
       validate: [arraySize, 'size is out of range or empty'],
     },
-    next: {
-      type: Date,
-      required: true,
-      default: new Date(),
-    },
   },
   {
     timestamps: true,
