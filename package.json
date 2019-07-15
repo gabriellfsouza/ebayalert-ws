@@ -7,7 +7,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore __tests__",
     "test": "jest",
-    "queue": "nodemon src/queue.js --ignore __tests__"
+    "qdev": "nodemon src/queue.js --ignore __tests__",
+    "queue": "src/queue.js"
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
