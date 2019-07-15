@@ -5,8 +5,8 @@ module.exports = {
   params: {
     'OPERATION-NAME': 'findItemsByKeywords',
     'SERVICE-VERSION': '1.0.0',
-    'SECURITY-APPNAME': 'Gabrield-alertws-PRD-0d8d33955-31891659',
-    'paginationInput.entriesPerPage': 3,
+    'SECURITY-APPNAME': process.env.EBAY_SECURITY_APPNAME,
+    'paginationInput.entriesPerPage': process.env.EBAY_ITEMS_PER_PAGE,
     'RESPONSE-DATA-FORMAT': 'JSON',
     'REST-PAYLOAD': null,
     sortOrder: 'PricePlusShippingLowestz',
