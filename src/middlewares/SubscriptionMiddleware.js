@@ -5,11 +5,7 @@ const schemaInclude = Yup.object().shape({
   email: Yup.string()
     .email()
     .required(),
-  phrases: Yup.array()
-    .of(Yup.string())
-    .min(1)
-    .max(3)
-    .required(),
+  phrase: Yup.string().required(),
 });
 
 /**
