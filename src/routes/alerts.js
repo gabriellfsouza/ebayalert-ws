@@ -10,9 +10,9 @@ const AlertJob = require('../jobs/AlertJob');
 routes.get('/alerts', async (req, res) => {
   const subscriptions = await Subscription.find();
   subscriptions.forEach(async (s) => {
-    // await alert.sendSubscribedMail(s.email, s.phrases[0]);
+    // await alert.sendSubscribedMail(s.email, s.phrase);
     const { email } = s;
-    const phrase = s.phrases[0];
+    const phrase = s.phrase;
     queue.add(AlertJob.key, {
       email,
       phrase,

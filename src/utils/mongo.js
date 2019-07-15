@@ -6,7 +6,7 @@ const aggregationQueue = [
       },
       updatedAt: '$updatedAt',
       email: '$email',
-      phrases: '$phrases',
+      phrase: '$phrase',
     },
   },
   {
@@ -15,7 +15,7 @@ const aggregationQueue = [
         $add: ['$fieldMath', '$updatedAt'],
       },
       email: '$email',
-      phrases: '$phrases',
+      phrase: '$phrase',
     },
   },
   {

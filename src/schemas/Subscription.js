@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-function arraySize(val) {
-  return val.length > 0 && val.length <= 3;
+function options(val) {
+  const values = [2, 10, 30];
+  return values.find(v => v === val) ? true : false;
 }
 
 const SubscriptionSchema = new Schema(
@@ -15,16 +16,16 @@ const SubscriptionSchema = new Schema(
     interval: {
       type: Number,
       required: true,
+      validate: [options, 'only accepts 2, 10 or 30 minutes interval'],
     },
     deleted: {
       type: Boolean,
       require: true,
       default: false,
     },
-    phrases: {
-      type: [String],
+    phrase: {
+      type: String,
       required: true,
-      validate: [arraySize, 'size is out of range or empty'],
     },
     next: {
       type: Date,

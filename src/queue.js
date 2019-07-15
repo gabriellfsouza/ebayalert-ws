@@ -22,7 +22,7 @@ async function sendNewAlerts() {
   console.log(subscriptions.length);
   subscriptions.forEach(async (s) => {
     const { email } = s;
-    const phrase = s.phrases[0];
+    const phrase = s.phrase;
     queue.add(AlertJob.key, {
       email,
       phrase,
