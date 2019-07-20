@@ -1,5 +1,6 @@
-#EbayAlerts
-![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/npm/v/editor.md.svg)
+# EbayAlerts
+
+![](https://img.shields.io/github/issues/gabriellfsouza/ebayalert-ws.svg) ![](https://img.shields.io/github/forks/gabriellfsouza/ebayalert-ws.svg) ![](https://img.shields.io/github/stars/gabriellfsouza/ebayalert-ws.svg) ![]()
 
 ### Introduction
 
@@ -42,3 +43,30 @@ function myFuntion(paramName){...}
 ![](https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg)
 
 You need to create a client app account in eBay to obtain the App ID and use the search API at https://developer.ebay.com
+
+## Installation
+
+```
+git clone https://github.com/gabriellfsouza/ebayalert-ws
+cd ebayalert-ws
+yarn
+```
+
+### Running
+
+```
+yarn dev
+```
+
+### Containers Instantiation
+
+```
+docker run --name mongo -p 27017:27017 -d -t mongo
+docker run --name redis -p 6379:6379 -d -t redis:alpine
+```
+
+### Tests
+
+```
+yarn test
+```
